@@ -43,7 +43,7 @@ export default function DiseaseDetect() {
         );
       }
 
-      const { data } = await axios.post(`${API}/disease/predict`, form);
+      const { data } = await axios.post(`${API}/api/disease/predict`, form);
       setResult(data);
       toast.success(t("detect.analysisComplete"));
     } catch (err) {
