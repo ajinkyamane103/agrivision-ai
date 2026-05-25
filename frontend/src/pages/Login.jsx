@@ -23,7 +23,7 @@ export default function Login() {
     try {
       await login(form.email, form.password);
       toast.success("Welcome back!");
-      navigate("/dashboard");
+      navigate("/");
     } catch { toast.error("Invalid email or password"); }
     finally { setLoading(false); }
   };
