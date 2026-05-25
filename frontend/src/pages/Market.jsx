@@ -14,10 +14,10 @@ export default function Market() {
   const [cats, setCats] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => { axios.get(`${API}/market/categories`).then(r => setCats(r.data)); }, []);
+  useEffect(() => { axios.get(`${API}/api/market/categories`).then(r => setCats(r.data)); }, []);
   useEffect(() => {
     setLoading(true);
-    axios.get(`${API}/market/products`, { params: { category: cat } })
+    axios.get(`${API}/api/market/products`, { params: { category: cat } })
       .then(r => setProducts(r.data.products || []))
       .finally(() => setLoading(false));
   }, [cat]);

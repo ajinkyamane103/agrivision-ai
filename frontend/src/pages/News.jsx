@@ -15,7 +15,7 @@ export default function News() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`${API}/news/?category=${cat}`)
+    axios.get(`${API}/api/news/?category=${cat}`)
       .then(r => setArts(r.data.articles || []))
       .finally(() => setLoading(false));
   }, [cat]);
