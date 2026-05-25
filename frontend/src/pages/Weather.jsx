@@ -3,7 +3,7 @@ import axios from "axios";
 import { CloudSun, Thermometer, Droplets, Wind, Leaf } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-const API = import.meta.env.VITE_API_URL || "https://your-backend.up.railway.app";
+const API = import.meta.env.VITE_API_URL || "https://agrivision-backend-production-ea30.up.railway.app";
 
 export default function Weather() {
   const { t } = useTranslation();

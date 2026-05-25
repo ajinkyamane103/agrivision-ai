@@ -5,7 +5,7 @@ import { Scan, Leaf, TrendingUp } from "lucide-react";
 import { useAuth } from "../hooks/useAuth.jsx";
 import { useTranslation } from "react-i18next";
 
-const API = import.meta.env.VITE_API_URL || "https://your-backend.up.railway.app";
+const API = import.meta.env.VITE_API_URL || "https://agrivision-backend-production-ea30.up.railway.app";
 
 export default function Dashboard() {
   const { t } = useTranslation();

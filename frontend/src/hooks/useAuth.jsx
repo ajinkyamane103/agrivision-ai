@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
-const API = import.meta.env.VITE_API_URL || "https://your-backend.up.railway.app";
+const API = import.meta.env.VITE_API_URL || "https://agrivision-backend-production-ea30.up.railway.app";
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {

@@ -4,7 +4,7 @@ import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-const API = import.meta.env.VITE_API_URL || "https://your-backend.up.railway.app";
+const API = import.meta.env.VITE_API_URL || "https://agrivision-backend-production-ea30.up.railway.app";
 
 const QUICK_QUESTIONS = {
   en: ["How to treat tomato blight?", "Best fertilizer for rice?", "PM-KISAN scheme details", "Monsoon crop planning"],
