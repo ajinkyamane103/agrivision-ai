@@ -61,7 +61,10 @@ def create_app():
 
     @app.route("/api/health")
     def health():
-        return jsonify({"status": "ok", "version": "2.0.0", "project": "AgriVision AI Mega"})
+     return jsonify({"status": "ok"})
+
+    with app.app_context():
+       db.create_all()
 
     return app
 
