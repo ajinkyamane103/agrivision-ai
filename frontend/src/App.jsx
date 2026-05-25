@@ -20,11 +20,17 @@ const Register = lazy(() => import("./pages/Register"));
 const ScanHistory = lazy(() => import("./pages/ScanHistory"));
 
 function ProtectedRoute({ children }) {
-  const { user } = useAuth();
 
-  return user ? children : <Navigate to="/login" replace />;
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  return user
+    ? children
+    : <Navigate to="/login" replace />;
 }
-
 export default function App() {
   return (
     <AuthProvider>
