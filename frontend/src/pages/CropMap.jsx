@@ -4,7 +4,7 @@ import axios from "axios";
 import { Map, Locate, Leaf } from "lucide-react";
 import "leaflet/dist/leaflet.css";
 
-const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const API = import.meta.env.VITE_API_URL || "https://your-backend.up.railway.app";
 
 const SEASON_COLORS = { primary: "#2D7A3A", kharif: "#F9A825", rabi: "#0288D1" };
 
