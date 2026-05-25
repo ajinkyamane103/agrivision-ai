@@ -198,12 +198,13 @@ def chat():
     if not user_msg:
         return jsonify({"error": "Empty message"}), 400
 
-    history = ChatMessage.query.filter_by(session_id=session_id).order_by(
-        ChatMessage.created_at
-    ).all()[-10:]
+    # history = ChatMessage.query.filter_by(session_id=session_id).order_by(
+    #     ChatMessage.created_at
+    # ).all()[-10:]
 
-    messages = [{"role": m.role, "content": m.content} for m in history]
-    messages.append({"role": "user", "content": user_msg})
+    # messages = [{"role": m.role, "content": m.content} for m in history]
+    # messages.append({"role": "user", "content": user_msg})
+    messages = [{"role": "user", "content": user_msg}]
 
     reply = get_groq_response(messages, language)
     source = "llm"
@@ -211,9 +212,9 @@ def chat():
         reply = rule_based_answer(user_msg, language)
         source = "rule_based"
 
-    db.session.add(ChatMessage(session_id=session_id, role="user", content=user_msg, language=language))
-    db.session.add(ChatMessage(session_id=session_id, role="assistant", content=reply, language=language))
-    db.session.commit()
+    # db.session.add(ChatMessage(session_id=session_id, role="user", content=user_msg, language=language))
+    # db.session.add(ChatMessage(session_id=session_id, role="assistant", content=reply, language=language))
+    # db.session.commit()
 
     return jsonify({
         "reply": reply,
