@@ -18,8 +18,11 @@ except ImportError:
 def create_app():
     app = Flask(__name__)
 
-    CORS(app, origins=["http://localhost:3000", "http://127.0.0.1:3000"])
-
+    CORS(
+    app,
+    resources={r"/*": {"origins": "*"}},
+    supports_credentials=True
+)
     app.config.update(
         SECRET_KEY=os.environ.get("SECRET_KEY", "agrivision-mega-secret-2024"),
         JWT_SECRET_KEY=os.environ.get("JWT_SECRET_KEY", "jwt-agrivision-secret"),
