@@ -207,6 +207,8 @@ def chat():
     messages = [{"role": "user", "content": user_msg}]
 
     reply = get_groq_response(messages, language)
+    print("GROQ RESPONSE:", reply)
+    print("API KEY EXISTS:", bool(GROQ_API_KEY))
     source = "llm"
     if not reply:
         reply = rule_based_answer(user_msg, language)
