@@ -32,6 +32,8 @@ def get_model():
         import torch
         from ml_models.cnn import CNN
         model_path = os.path.join(_BASE, "../ml_models/plant_disease_model_1_latest.pt")
+        with open(model_path, "rb") as f:
+         print("MODEL FIRST BYTES:", f.read(50))
         _model = CNN(39)
         if os.path.exists(model_path):
             _model.load_state_dict(torch.load(model_path, map_location="cpu"))
