@@ -5,10 +5,47 @@ __pycache__/
 *.db
 *.sqlite3
 .env
-venv/
+.venv/
 env/
 node_modules/
 .DS_Store
 *.log
 backend/training/dataset/
 
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Build
+dist/
+build/
+
+# Env
+.env
+
+# Android
+.gradle/
+.idea/
+local.properties
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+
+backend/.venv/
+backend/__pycache__/
+frontend/node_modules/
+frontend/dist/
+frontend/android/
+.env
+
+google-services.json
+
+frontend/dist/

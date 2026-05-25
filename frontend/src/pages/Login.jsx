@@ -1,4 +1,10 @@
 // src/pages/Login.jsx
+import { auth } from "../firebase";
+
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword
+} from "firebase/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Leaf } from "lucide-react";
