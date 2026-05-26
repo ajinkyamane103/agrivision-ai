@@ -49,3 +49,5 @@ frontend/android/
 google-services.json
 
 frontend/dist/
+
+backend/ml_models/*.pt
