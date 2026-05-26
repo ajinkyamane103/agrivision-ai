@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-const API = import.meta.env.VITE_API_URL || "https://agrivision-backend-production-ea30.up.railway.app";
+const API = import.meta.env.VITE_API_URL || "https://agrivision-ai.up.railway.app/api";
 
 export default function DiseaseDetect() {
   const { t } = useTranslation();

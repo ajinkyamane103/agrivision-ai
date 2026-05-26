@@ -3,7 +3,7 @@ import axios from "axios";
 import { Newspaper, ExternalLink } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-const API = import.meta.env.VITE_API_URL || "https://agrivision-backend-production-ea30.up.railway.app";
+const API = import.meta.env.VITE_API_URL || "https://agrivision-ai.up.railway.app/api";
 const CATS = ["general", "weather", "market", "schemes", "disease"];
 const CAT_COLORS = { general: "bg-blue-100 text-blue-700", weather: "bg-sky-100 text-sky-700", market: "bg-yellow-100 text-yellow-700", schemes: "bg-green-100 text-green-700", disease: "bg-red-100 text-red-700" };
 

@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { Leaf, RefreshCw } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-const API = import.meta.env.VITE_API_URL || "https://agrivision-backend-production-ea30.up.railway.app";
+const API = import.meta.env.VITE_API_URL || "https://agrivision-ai.up.railway.app/api";
 
 const SOILS = ["Sandy", "Loamy", "Black", "Red", "Clayey", "Silty"];
 const CROPS = ["Rice", "Wheat", "Maize", "Soybean", "Sugarcane", "Cotton", "Groundnut", "Tomato", "Potato", "Onion", "Chickpea", "Mustard"];

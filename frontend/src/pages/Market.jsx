@@ -3,7 +3,7 @@ import axios from "axios";
 import { ShoppingCart, Search } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-const API = import.meta.env.VITE_API_URL || "https://agrivision-backend-production-ea30.up.railway.app";
+const API = import.meta.env.VITE_API_URL || "https://agrivision-ai.up.railway.app/api";
 const CAT_COLORS = { Fungicide: "bg-purple-100 text-purple-700", Insecticide: "bg-red-100 text-red-700", "Bio-fungicide": "bg-green-100 text-green-700", "Bio-Pesticide": "bg-teal-100 text-teal-700", Fertilizer: "bg-blue-100 text-blue-700", Organic: "bg-lime-100 text-lime-700" };
 
 export default function Market() {
