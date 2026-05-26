@@ -20,7 +20,13 @@ def create_app():
 
     CORS(
     app,
-    resources={r"/*": {"origins": "*"}},
+    resources={
+        r"/api/*": {
+            "origins": [
+                "https://agrivision-ai-virid.vercel.app"
+            ]
+        }
+    },
     supports_credentials=True
 )
     app.config.update(
