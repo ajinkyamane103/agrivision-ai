@@ -1,53 +1,70 @@
+# =========================
+# Python
+# =========================
+venv/
+.venv/
+env/
+
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Database
 *.db
 *.sqlite3
+
+# Environment Variables
 .env
-.venv/
-env/
-node_modules/
-.DS_Store
+.env.local
+.env.production
+
+# Logs
 *.log
+
+# =========================
+# ML / Training
+# =========================
 backend/training/dataset/
+backend/ml_models/*.pt
 
-# Python
-venv/
-.venv/
-__pycache__/
-*.pyc
-
-# Node
+# =========================
+# Node / React
+# =========================
 node_modules/
+frontend/node_modules/
 
-# Build
+# Build files
 dist/
 build/
+frontend/dist/
 
-# Env
-.env
-
-# Android
+# =========================
+# Android / Capacitor
+# =========================
 .gradle/
 .idea/
 local.properties
 *.iml
 
-# OS
+frontend/android/
+
+# Firebase
+google-services.json
+
+# =========================
+# OS Files
+# =========================
 .DS_Store
 Thumbs.db
 
+# =========================
+# Vercel / Railway
+# =========================
+.vercel/
 
-backend/.venv/
-backend/__pycache__/
-frontend/node_modules/
-frontend/dist/
-frontend/android/
-.env
-
-google-services.json
-
-frontend/dist/
-
-backend/ml_models/*.pt
+# =========================
+# Misc
+# =========================
+coverage/
+.cache/
