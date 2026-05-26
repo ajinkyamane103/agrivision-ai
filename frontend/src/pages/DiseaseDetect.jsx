@@ -226,10 +226,6 @@ function PlantTypeResult({ result }) {
         <p className="text-sm font-semibold text-gray-700">{t("detect.detectedType")}</p>
         <p className="text-xl font-bold text-primary mt-1">{result.plant_type}</p>
       </div>
-      <div className="bg-blue-50 rounded-xl p-3 text-sm text-blue-700">
-        💡 For precise plant identification, use <strong>PlantNet</strong> or
-        <strong> iNaturalist</strong> apps for free plant recognition.
-      </div>
     </>
   );
 }
