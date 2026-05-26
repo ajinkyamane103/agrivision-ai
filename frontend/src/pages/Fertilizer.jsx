@@ -18,7 +18,7 @@ export function Fertilizer() {
   const submit = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.post(`${API}/api/fertilizer/recommend`, {
+      const { data } = await axios.post(`${API}/fertilizer/recommend`, {
         ...form,
         nitrogen: +form.nitrogen,
         phosphorus: +form.phosphorus,

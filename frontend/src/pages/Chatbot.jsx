@@ -75,7 +75,7 @@ export default function Chatbot() {
     setMessages(prev => [...prev, { role: "user", content: msg, time: new Date() }]);
     setLoading(true);
     try {
-      const { data } = await axios.post(`${API}/api/chatbot/chat`, {
+      const { data } = await axios.post(`${API}/chatbot/chat`, {
         message: msg, session_id: SESSION_ID, language: lang,
       });
       setMessages(prev => [...prev, { role: "assistant", content: data.reply, time: new Date() }]);

@@ -14,7 +14,7 @@ export default function Weather() {
 
   const fetchData = (lat, lon) => {
     setLoading(true);
-    axios.get(`${API}/api/weather/crop-suggestions?lat=${lat}&lon=${lon}`)
+    axios.get(`${API}/weather/crop-suggestions?lat=${lat}&lon=${lon}`)
       .then(r => { setWeather(r.data.weather); setCrops(r.data.recommended_crops); })
       .catch(() => setError(t("weather.error")))
       .finally(() => setLoading(false));
