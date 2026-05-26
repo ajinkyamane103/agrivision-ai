@@ -82,15 +82,15 @@ def predict():
     pred_idx, confidence = run_prediction(fpath)
     pred_name = disease_info.iloc[pred_idx]["disease_name"]
 
-    if confidence < 0.93 and "healthy" not in pred_name.lower():
-        return jsonify({
-            "type": "invalid_image",
-            "disease_name": "Leaf looks healthy or unclear",
-            "description": "Model is not confident enough about disease detection.",
-            "prevention": "Upload a clearer infected leaf image if disease exists.",
-            "confidence": round(confidence * 100, 1),
-            "image_path": f"static/uploads/{fname}",
-        })
+    if confidence < 0.45:
+     return jsonify({
+        "type": "low_confidence",
+        "disease_name": pred_name.replace("___", " - "),
+        "description": "Prediction confidence is low. Try a clearer image.",
+        "prevention": "Use bright lighting and focus on affected leaf area.",
+        "confidence": round(confidence * 100, 1),
+        "image_path": f"static/uploads/{fname}",
+    })
 
     # Class 4 = Background_without_leaves → detect plant type instead
     is_non_leaf = (pred_idx == 4)
