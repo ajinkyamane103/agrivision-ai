@@ -8,7 +8,7 @@ import {
 import axios from "axios";
 
 const API =
-  import.meta.env.VITE_API_URL ||"https://https://agrivision-ai.up.railway.app/api/api";
+  import.meta.env.VITE_API_URL ||"https://agrivision-ai.up.railway.app/api/api";
 
 const AuthContext = createContext(null);
 

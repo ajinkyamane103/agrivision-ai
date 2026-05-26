@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     port: 3000,
     proxy: {
-      "/api": { target: "https://https://agrivision-ai.up.railway.app/api", changeOrigin: true },
+      "/api": { target: "https://agrivision-ai.up.railway.app/api", changeOrigin: true },
     },
   },
   build: { outDir: "dist", sourcemap: false },
