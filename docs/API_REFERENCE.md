@@ -60,6 +60,7 @@ Request a password reset link. The response is intentionally generic so register
 
 Required backend environment variables for email:
 - `FRONTEND_URL`, for example `https://agrivision-ai-virid.vercel.app`
+- `CORS_ORIGINS`, for example `https://agrivision-ai-virid.vercel.app,http://localhost:5173,http://127.0.0.1:5173`
 - `SMTP_HOST`
 - `SMTP_PORT`, usually `587`
 - `SMTP_USERNAME`
