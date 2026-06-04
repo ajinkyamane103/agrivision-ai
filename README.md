@@ -260,6 +260,7 @@ Forgot password uses backend-generated reset tokens stored in the database, then
 
 ```bash
 FRONTEND_URL=https://agrivision-ai-virid.vercel.app
+CORS_ORIGINS=https://agrivision-ai-virid.vercel.app,http://localhost:5173,http://127.0.0.1:5173
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USERNAME=your-email@gmail.com

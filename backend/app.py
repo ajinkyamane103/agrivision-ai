@@ -15,20 +15,34 @@ except ImportError:
     pass
 
 
+def _cors_origins():
+    default_origins = [
+        "https://agrivision-ai-virid.vercel.app",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ]
+    extra_origins = os.environ.get("CORS_ORIGINS", "")
+    return default_origins + [
+        origin.strip()
+        for origin in extra_origins.split(",")
+        if origin.strip()
+    ]
+
+
 def create_app():
     app = Flask(__name__)
 
     CORS(
-    app,
-    resources={
-        r"/api/*": {
-            "origins": [
-                "https://agrivision-ai-virid.vercel.app"
-            ]
-        }
-    },
-    supports_credentials=True
-)
+        app,
+        resources={
+            r"/api/*": {
+                "origins": _cors_origins(),
+            }
+        },
+        supports_credentials=True,
+    )
     app.config.update(
         SECRET_KEY=os.environ.get("SECRET_KEY", "agrivision-mega-secret-2024"),
         JWT_SECRET_KEY=os.environ.get("JWT_SECRET_KEY", "jwt-agrivision-secret"),
