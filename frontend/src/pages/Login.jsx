@@ -1,10 +1,3 @@
-// src/pages/Login.jsx
-import { auth } from "../firebase";
-
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
-} from "firebase/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Leaf } from "lucide-react";
@@ -46,6 +39,11 @@ export default function Login() {
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
             </div>
           ))}
+          <div className="text-right -mt-2">
+            <Link to="/forgot-password" className="text-sm text-primary font-semibold hover:underline">
+              Forgot password?
+            </Link>
+          </div>
           <button type="submit" disabled={loading} className="w-full py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary-dark transition disabled:opacity-50">
             {loading ? "Signing in..." : "Sign In"}
           </button>

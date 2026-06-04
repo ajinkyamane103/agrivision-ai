@@ -41,6 +41,58 @@ Create a new user account.
 
 ---
 
+### POST /auth/forgot-password
+Request a password reset link. The response is intentionally generic so registered emails are not exposed.
+
+**Body:**
+```json
+{
+  "email": "ramesh@example.com"
+}
+```
+
+**Response 200:**
+```json
+{
+  "message": "If an account exists with that email, a reset link has been sent."
+}
+```
+
+Required backend environment variables for email:
+- `FRONTEND_URL`, for example `https://agrivision-ai-virid.vercel.app`
+- `SMTP_HOST`
+- `SMTP_PORT`, usually `587`
+- `SMTP_USERNAME`
+- `SMTP_PASSWORD`
+- `MAIL_DEFAULT_SENDER`
+- `SMTP_USE_TLS`, usually `true`
+
+Optional:
+- `PASSWORD_RESET_TOKEN_MINUTES`, defaults to `30`
+- `PASSWORD_RESET_DEV_MODE=true`, returns the reset URL in the API response for local testing only
+
+---
+
+### POST /auth/reset-password
+Set a new password using the token from the reset email URL.
+
+**Body:**
+```json
+{
+  "token": "token-from-reset-link",
+  "password": "newsecurepass123"
+}
+```
+
+**Response 200:**
+```json
+{
+  "message": "Password reset successful"
+}
+```
+
+---
+
 ### GET /auth/me *(protected)*
 Returns current user profile.
 

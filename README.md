@@ -254,6 +254,25 @@ Add keys to `backend/.env`.
 
 ---
 
+### Password Reset Email
+
+Forgot password uses backend-generated reset tokens stored in the database, then sends the reset link by SMTP. Add these variables to Railway for the backend service:
+
+```bash
+FRONTEND_URL=https://agrivision-ai-virid.vercel.app
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USERNAME=your-email@gmail.com
+SMTP_PASSWORD=your-app-password
+MAIL_DEFAULT_SENDER=your-email@gmail.com
+SMTP_USE_TLS=true
+PASSWORD_RESET_TOKEN_MINUTES=30
+```
+
+For local-only testing, set `PASSWORD_RESET_DEV_MODE=true` to include the generated reset URL in the API response. Do not enable that in production.
+
+---
+
 
 
 ## 📸 Screenshots

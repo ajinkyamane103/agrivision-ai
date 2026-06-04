@@ -20,6 +20,17 @@ class User(db.Model):
     scans         = db.relationship("ScanHistory", backref="user", lazy=True)
 
 
+class PasswordResetToken(db.Model):
+    __tablename__ = "password_reset_tokens"
+    id            = db.Column(db.Integer, primary_key=True)
+    user_id       = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    token_hash    = db.Column(db.String(64), unique=True, nullable=False, index=True)
+    expires_at    = db.Column(db.DateTime, nullable=False)
+    used_at       = db.Column(db.DateTime, nullable=True)
+    created_at    = db.Column(db.DateTime, default=datetime.utcnow)
+    user          = db.relationship("User", backref=db.backref("password_reset_tokens", lazy=True))
+
+
 class ScanHistory(db.Model):
     __tablename__ = "scan_history"
     id            = db.Column(db.Integer, primary_key=True)

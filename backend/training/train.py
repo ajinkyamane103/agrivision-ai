@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader
 from cnn import CNN
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(device)
+print("Using Device:", device)
 
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
@@ -19,16 +19,18 @@ transform = transforms.Compose([
     transforms.ToTensor()
 ])
 
+# Dataset Paths
 train_dataset = datasets.ImageFolder(
-    "dataset/train",
+    "/content/data/train",
     transform=transform
 )
 
 valid_dataset = datasets.ImageFolder(
-    "dataset/valid",
+    "/content/data/valid",
     transform=transform
 )
 
+# Data Loaders
 train_loader = DataLoader(
     train_dataset,
     batch_size=32,
@@ -41,30 +43,28 @@ valid_loader = DataLoader(
     shuffle=False
 )
 
+# Model
 model = CNN(39)
-
-model.load_state_dict(
-    torch.load(
-        "../ml_models/plant_disease_model_1_latest.pt"
-    )
-)
-
 model = model.to(device)
 
+# Loss Function
 criterion = nn.CrossEntropyLoss()
 
+# Optimizer
 optimizer = torch.optim.Adam(
     model.parameters(),
     lr=0.0001
 )
 
-epochs = 10
+epochs = 20
 
 for epoch in range(epochs):
 
     model.train()
 
     running_loss = 0
+    train_correct = 0
+    train_total = 0
 
     for images, labels in train_loader:
 
@@ -75,6 +75,11 @@ for epoch in range(epochs):
 
         outputs = model(images)
 
+        _, predicted = torch.max(outputs, 1)
+
+        train_total += labels.size(0)
+        train_correct += (predicted == labels).sum().item()
+
         loss = criterion(outputs, labels)
 
         loss.backward()
@@ -83,12 +88,17 @@ for epoch in range(epochs):
 
         running_loss += loss.item()
 
-    print(f"Epoch [{epoch+1}/{epochs}] Loss: {running_loss:.4f}")
+    train_accuracy = 100 * train_correct / train_total
+
+    print(f"\nEpoch {epoch+1}/{epochs}")
+    print(f"Loss: {running_loss:.4f}")
+    print(f"Train Accuracy: {train_accuracy:.2f}%")
+
+    # Validation
+    model.eval()
 
     correct = 0
     total = 0
-
-    model.eval()
 
     with torch.no_grad():
 
@@ -102,16 +112,16 @@ for epoch in range(epochs):
             _, predicted = torch.max(outputs, 1)
 
             total += labels.size(0)
-
             correct += (predicted == labels).sum().item()
 
-    accuracy = 100 * correct / total
+    validation_accuracy = 100 * correct / total
 
-    print(f"Validation Accuracy: {accuracy:.2f}%")
+    print(f"Validation Accuracy: {validation_accuracy:.2f}%")
 
+# Save Model
 torch.save(
     model.state_dict(),
-    "checkpoints/best_model.pt"
+    "plant_disease_model_1_latest_new_collab_file.pt"
 )
 
-print("Model Saved")
+print("\nModel Saved Successfully!")

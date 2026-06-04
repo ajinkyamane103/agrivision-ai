@@ -104,6 +104,29 @@ export function AuthProvider({ children }) {
     return data;
   };
 
+  const forgotPassword = async (email) => {
+
+    const { data } = await axios.post(
+      `${API}/auth/forgot-password`,
+      { email }
+    );
+
+    return data;
+  };
+
+  const resetPassword = async (token, password) => {
+
+    const { data } = await axios.post(
+      `${API}/auth/reset-password`,
+      {
+        token,
+        password
+      }
+    );
+
+    return data;
+  };
+
   const logout = () => {
 
     localStorage.removeItem("agri_token");
@@ -126,6 +149,8 @@ export function AuthProvider({ children }) {
         loading,
         login,
         register,
+        forgotPassword,
+        resetPassword,
         logout
       }}
     >
